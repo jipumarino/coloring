@@ -1,6 +1,8 @@
 require 'byebug'
 
 get '/' do
+  @threshold_values = [0.45, 0.455, 0.460, 0.465, 0.470, 0.475, 0.480, 0.485, 0.490, 0.495, 0.499, 0.4995, 0.4999]
+  @filter_radius_values = (1..10).to_a
   erb :image_upload_form
 end
 
@@ -27,19 +29,3 @@ post '/upload_image' do
 
   erb :show_image
 end
-
-# Valid threshold values
-# 0.4999
-# 0.4995
-# 0.499
-# 0.495
-# 0.490
-# 0.485
-# 0.480
-# 0.475
-# 0.470
-# 0.465
-# 0.460
-# 0.455
-# 0.45
-
