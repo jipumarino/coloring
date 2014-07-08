@@ -24,8 +24,8 @@ post '/upload_image' do
     return "Invalid filter radius (should be between 1 and 10"
   end
 
-  command = "convert #{image_path} -background white -alpha remove -alpha off bmp:- | mkbitmap -f #{filter_radius} -s 2 -t #{threshold} | convert -trim +repage pbm:- #{settings.root}/public/images/color.png"
+  command = "convert #{image_path} -background white -alpha remove -alpha off bmp:- | mkbitmap -f #{filter_radius} -s 2 -t #{threshold} | convert -trim +repage pbm:- /tmp/color.png"
   system(command)
 
-  erb :show_image
+  send_file '/tmp/color.png', :type => :png
 end
