@@ -24,6 +24,7 @@ post '/upload_image' do
 
   command = "convert #{image_path} -background white -alpha remove -alpha off bmp:- | mkbitmap -f #{filter_radius} -s 2 -t #{threshold} | convert -trim +repage pbm:- #{settings.root}/public/images/color.png"
   system(command)
+
   erb :show_image
 end
 
